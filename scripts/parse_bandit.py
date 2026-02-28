@@ -1,42 +1,44 @@
+
 import json
-import os
-import pandas as pd
+import csv
+from pathlib import Path
 
-# JSON'u aç
-with open("results/bandit_output.json", "r") as f:
-    data = json.load(f)
 
-# Bandit'in issue bulduğu dosyaları set içine al
-flagged_files = set()
+RESULTS_DIR = Path("results")
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+INPUT_FILE = RESULTS_DIR / "bandit_raw.json"
+OUTPUT_FILE = RESULTS_DIR / "bandit.csv"
 
-for item in data["results"]:
-    filename = item["filename"]
-    basename = os.path.basename(filename.replace("\\", "/"))
-    flagged_files.add(basename)
 
-# Dataset içindeki tüm dosyaları bul
-all_files = []
+if not INPUT_FILE.exists():
+    print(f"Error: {INPUT_FILE} not found. Please run scripts/run_bandit.py first.")
+    exit(1)
 
-for root, dirs, files in os.walk("dataset"):
-    for file in files:
-        if file.endswith(".py"):
-            all_files.append(file)
 
-# Sonuç tablosu oluştur
-rows = []
+with open(INPUT_FILE, "r", encoding="utf-8") as f:
+    try:
+        data = json.load(f)
+    except json.JSONDecodeError:
+        print(f"Error: {INPUT_FILE} contains invalid JSON. It might be empty or corrupted.")
+        data = {}
 
-for file in all_files:
-    if file in flagged_files:
-        bandit_result = 1
-    else:
-        bandit_result = 0
 
-    rows.append({
-        "file_name": file,
-        "bandit_result": bandit_result
-    })
+with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as csvfile:
+    writer = csv.writer(csvfile)
+    
+    writer.writerow(["file_name", "line_number", "issue_text", "severity", "confidence"])
+    
+    
+    for result in data.get("results", []):
+        full_filename = result.get("filename", "")
+        
+        file_name = Path(full_filename).name
+        
+        line_number = result.get("line_number", "")
+        issue_text = result.get("issue_text", "")
+        severity = result.get("issue_severity", "")
+        confidence = result.get("issue_confidence", "")
+        
+        writer.writerow([file_name, line_number, issue_text, severity, confidence])
 
-df = pd.DataFrame(rows)
-df.to_csv("results/bandit_parsed.csv", index=False)
-
-print("Bandit parse tamamlandı.")
+print(f"Bandit CSV saved to {OUTPUT_FILE}")

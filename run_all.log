@@ -1,0 +1,74 @@
+2026-02-28 14:10:10 [INFO] Starting benchmarking workflow...
+2026-02-28 14:10:10 [INFO] --------------------------------------------------
+2026-02-28 14:10:10 [INFO] Executing script: scripts\run_bandit.py
+2026-02-28 14:10:10 [INFO] [run_bandit.py] [main]	INFO	profile include tests: None
+2026-02-28 14:10:10 [INFO] [run_bandit.py] [main]	INFO	profile exclude tests: None
+2026-02-28 14:10:10 [INFO] [run_bandit.py] [main]	INFO	cli include tests: None
+2026-02-28 14:10:10 [INFO] [run_bandit.py] [main]	INFO	cli exclude tests: None
+2026-02-28 14:10:10 [INFO] [run_bandit.py] [json]	INFO	JSON output written to file: results\bandit_raw.json
+2026-02-28 14:10:10 [INFO] [run_bandit.py] Running Bandit...
+2026-02-28 14:10:10 [INFO] [run_bandit.py] Bandit run completed with exit code 1 (Vulnerabilities found or other error).
+2026-02-28 14:10:10 [INFO] [run_bandit.py] Bandit results saved to results\bandit_raw.json
+2026-02-28 14:10:10 [INFO] Successfully finished: scripts\run_bandit.py
+2026-02-28 14:10:10 [INFO] --------------------------------------------------
+2026-02-28 14:10:10 [INFO] Executing script: scripts\parse_bandit.py
+2026-02-28 14:10:11 [INFO] [parse_bandit.py] Bandit CSV saved to results\bandit.csv
+2026-02-28 14:10:11 [INFO] Successfully finished: scripts\parse_bandit.py
+2026-02-28 14:10:11 [INFO] --------------------------------------------------
+2026-02-28 14:10:11 [INFO] Executing script: scripts\run_llm.py
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_1.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_10.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_11.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_12.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_13.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_14.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_15.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_2.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_3.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_4.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_5.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_6.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_7.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_8.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] clean_9.py: 0
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_1.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_10.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_11.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_12.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_13.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_14.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_15.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_2.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_3.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_4.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_5.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_6.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_7.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_8.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] vuln_9.py: 1
+2026-02-28 14:10:50 [INFO] [run_llm.py] LLM analysis saved to results\llm.csv
+2026-02-28 14:10:50 [INFO] Successfully finished: scripts\run_llm.py
+2026-02-28 14:10:50 [INFO] --------------------------------------------------
+2026-02-28 14:10:50 [INFO] Executing script: scripts\metrics.py
+2026-02-28 14:10:50 [INFO] [metrics.py] Metrics Evaluation (Total files evaluated: 30)
+2026-02-28 14:10:50 [INFO] [metrics.py] ----------------------------------------
+2026-02-28 14:10:50 [INFO] [metrics.py] True Positives (TP): 14
+2026-02-28 14:10:50 [INFO] [metrics.py] False Positives (FP): 3
+2026-02-28 14:10:51 [INFO] [metrics.py] False Negatives (FN): 0
+2026-02-28 14:10:51 [INFO] [metrics.py] True Negatives (TN): 13
+2026-02-28 14:10:51 [INFO] [metrics.py] ----------------------------------------
+2026-02-28 14:10:51 [INFO] [metrics.py] Precision: 0.8235
+2026-02-28 14:10:51 [INFO] [metrics.py] Recall:    1.0000
+2026-02-28 14:10:51 [INFO] [metrics.py] Accuracy:  0.9000
+2026-02-28 14:10:51 [INFO] [metrics.py] 
+2026-02-28 14:10:51 [INFO] [metrics.py] Final metrics comparison view saved to results\final_metrics.csv
+2026-02-28 14:10:51 [INFO] Successfully finished: scripts\metrics.py
+2026-02-28 14:10:51 [INFO] ==================================================
+2026-02-28 14:10:51 [INFO] WORKFLOW SUMMARY
+2026-02-28 14:10:51 [INFO] ==================================================
+2026-02-28 14:10:51 [INFO] [ OK ] scripts\run_bandit.py: Success
+2026-02-28 14:10:51 [INFO] [ OK ] scripts\parse_bandit.py: Success
+2026-02-28 14:10:51 [INFO] [ OK ] scripts\run_llm.py: Success
+2026-02-28 14:10:51 [INFO] [ OK ] scripts\metrics.py: Success
+2026-02-28 14:10:51 [INFO] ==================================================
+2026-02-28 14:10:51 [INFO] Benchmarking workflow completed.

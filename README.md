@@ -1,0 +1,1 @@
+This repository contains the experimental pipeline for LLM vs Static Analysis vulnerability detection comparison.
